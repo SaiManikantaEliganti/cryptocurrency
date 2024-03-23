@@ -9,7 +9,7 @@ const apiUrl = 'https://apis.ccbp.in/crypto-currency-converter'
 
 class CryptocurrencyTracker extends Component {
   state = {
-    CryptocurrenciesData: [],
+    cryptocurrenciesData: [],
     isLoading: true,
   }
 
@@ -22,7 +22,7 @@ class CryptocurrencyTracker extends Component {
     const fetchData = await response.json()
 
     this.setState({
-      CryptocurrenciesData: fetchData.map(eachCryptocurrency => ({
+      cryptocurrenciesData: fetchData.map(eachCryptocurrency => ({
         id: eachCryptocurrency.id,
         currencyLogoUrl: eachCryptocurrency.currency_logo,
         currencyName: eachCryptocurrency.currency_name,
@@ -34,9 +34,9 @@ class CryptocurrencyTracker extends Component {
   }
 
   renderCryptocurrenciesList = () => {
-    const {CryptocurrenciesData} = this.state
+    const {cryptocurrenciesData} = this.state
 
-    return <CryptocurrenciesList CryptocurrenciesData={CryptocurrenciesData} />
+    return <CryptocurrenciesList CryptocurrenciesData={cryptocurrenciesData} />
   }
 
   renderLoader = () => (
